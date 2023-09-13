@@ -16,7 +16,7 @@ function connectonHandler(ws, req) {
 
   ws.on('message', (msg) => {
     const message = JSON.parse(msg);
-    state.games[message.roomId].turn[message.sessionId] = message.value
+    state.games[message.roomId].turn[message.sessionId] = message.value;
     console.log(JSON.stringify(state.games[message.roomId].turn));
   });
 

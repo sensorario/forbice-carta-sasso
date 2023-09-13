@@ -15,8 +15,7 @@ function handshake(first, second, room, roomId) {
   });
   sendMessageToClient({
     to: second,
-    data: { type: 'handshake', opponent: first, room: room, 
-    roomId: roomId },
+    data: { type: 'handshake', opponent: first, room: room, roomId: roomId },
   });
 }
 

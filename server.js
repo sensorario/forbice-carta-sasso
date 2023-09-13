@@ -12,10 +12,10 @@ server.listen(8080, () => {
   console.log('Server in ascolto su http://localhost:8080');
 });
 
-// setInterval(() => {
-//   console.log({
-//     counter: ++state.counter,
-//     clients: state.clients.size,
-//     games: state.games,
-//   });
-// }, config.interval);
+setInterval(() => {
+  console.log({
+    counter: ++state.counter,
+    // clients: state.clients.size,
+    // games: state.games,
+  });
+}, config.interval);
