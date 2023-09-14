@@ -9,6 +9,12 @@ let sessionId;
 let room;
 let roomId;
 
+function hideButtons() {
+  buttons.forEach((button) => {
+    button.style.visibility = 'hidden';
+  });
+}
+
 function getCookie(name) {
   const cookies = document.cookie.split(';');
   for (const cookie of cookies) {
@@ -32,6 +38,7 @@ let ws = sessionIdCookie
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
+    hideButtons();
     const choice = button.getAttribute('data-choice');
     ws.send(
       JSON.stringify({
