@@ -58,7 +58,7 @@ ws.onmessage = (event) => {
     counterElement.textContent = data.counter;
   }
 
-  if (data.type === 'handshake') {
+  if (data.type === 'newturn') {
     room = data.room;
     roomId = data.roomId;
     roomIdElement.textContent = 'roomId: ' + roomId;

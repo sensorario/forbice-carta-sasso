@@ -8,15 +8,15 @@ function sendMessageToClient(message) {
   }
 }
 
-function handshake(first, second, room, roomId) {
+function newturn(first, second, room, roomId) {
   sendMessageToClient({
     to: first,
-    data: { type: 'handshake', opponent: second, room: room, roomId: roomId },
+    data: { type: 'newturn', opponent: second, room: room, roomId: roomId },
   });
   sendMessageToClient({
     to: second,
-    data: { type: 'handshake', opponent: first, room: room, roomId: roomId },
+    data: { type: 'newturn', opponent: first, room: room, roomId: roomId },
   });
 }
 
-module.exports = handshake;
+module.exports = newturn;

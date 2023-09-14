@@ -1,4 +1,4 @@
-const handshake = require('./handshake');
+const newturn = require('./newturn');
 const { statuses } = require('./config/config');
 const { state } = require('./config/state');
 const randomId = require('./random');
@@ -17,7 +17,7 @@ function createOrEnterTheRoom(sessionId) {
       },
     };
 
-    handshake(state.stanza, sessionId, state.games[roomId], roomId);
+    newturn(state.stanza, sessionId, state.games[roomId], roomId);
 
     state.stanza = null;
     state.status = statuses.engaged;
