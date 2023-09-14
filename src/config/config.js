@@ -3,6 +3,12 @@ const statuses = {
   engaged: 'engaged',
 };
 
+const type = {
+  choice: 'choice',
+};
+
+const allowedClientRequestType = [type.choice];
+
 const config = {
   interval: 1000,
 };
@@ -10,4 +16,6 @@ const config = {
 module.exports = {
   statuses,
   config,
+  allowedClientRequestType,
+  type,
 };

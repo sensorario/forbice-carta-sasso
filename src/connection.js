@@ -2,6 +2,7 @@ const retrieveSessionId = require('./session');
 const createOrEnterTheRoom = require('./room');
 const { statuses, config } = require('./config/config');
 const { state } = require('./config/state');
+const request = require('./clientrequests');
 
 function connectonHandler(ws, req) {
   sessionId = retrieveSessionId(req, ws);
@@ -14,11 +15,7 @@ function connectonHandler(ws, req) {
     state.clients.delete(sessionId);
   });
 
-  ws.on('message', (msg) => {
-    const message = JSON.parse(msg);
-    state.games[message.roomId].turn[message.sessionId] = message.value;
-    console.log(JSON.stringify(state.games[message.roomId].turn));
-  });
+  ws.on('message', request);
 
   setInterval(() => {
     ws.send(JSON.stringify({ type: 'counter_update', counter: state.counter }));
