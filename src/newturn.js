@@ -8,15 +8,16 @@ function sendMessageToClient(message) {
   }
 }
 
-function newturn(first, second, room, roomId) {
-  sendMessageToClient({
+async function newturn(first, second, room, roomId) {
+  await sendMessageToClient({
     to: first,
     data: { type: 'newturn', opponent: second, room: room, roomId: roomId },
   });
-  sendMessageToClient({
+  await sendMessageToClient({
     to: second,
     data: { type: 'newturn', opponent: first, room: room, roomId: roomId },
   });
+  console.log(state.games[roomId]);
 }
 
 module.exports = newturn;

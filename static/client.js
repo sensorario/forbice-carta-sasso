@@ -9,9 +9,9 @@ let sessionId;
 let room;
 let roomId;
 
-function hideButtons() {
+function setButtonsVisibility(visibility) {
   buttons.forEach((button) => {
-    button.style.visibility = 'hidden';
+    button.style.visibility = visibility;
   });
 }
 
@@ -38,7 +38,7 @@ let ws = sessionIdCookie
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
-    hideButtons();
+    setButtonsVisibility('hidden');
     const choice = button.getAttribute('data-choice');
     ws.send(
       JSON.stringify({
@@ -69,7 +69,8 @@ ws.onmessage = (event) => {
     room = data.room;
     roomId = data.roomId;
     roomIdElement.textContent = 'roomId: ' + roomId;
-    turn.textContent = 'turno ' + room.turns.length + 1;
-    actions.style.visibility = 'visible';
+    const turno = room.turns.length + 1;
+    turn.textContent = 'turno ' + turno;
+    setButtonsVisibility('visible');
   }
 };

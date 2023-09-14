@@ -1,7 +1,11 @@
 const { statuses } = require('./config');
 
 const state = {
-  games: {},
+  games: {
+    // players: ['aaa':'bbb'],
+    // turns: ['aaa','bbb','bbb'],
+    // turn: { aaa: null, bbb: null}
+  },
   counter: 0,
   stanza: null,
   clients: new Map(),
