@@ -3,19 +3,23 @@ const { statuses } = require('./config/config');
 const { state } = require('./config/state');
 const randomId = require('./random');
 
+function buildRoom(sessionId) {
+  return {
+    players: [state.stanza, sessionId],
+    turns: [],
+    turn: {
+      [state.stanza]: null,
+      [sessionId]: null,
+    },
+  };
+}
+
 function createOrEnterTheRoom(sessionId) {
   if (state.stanza == null) {
     state.stanza = sessionId;
   } else {
     const roomId = randomId();
-    state.games[roomId] = {
-      players: [state.stanza, sessionId],
-      turns: [],
-      turn: {
-        [state.stanza]: null,
-        [sessionId]: null,
-      },
-    };
+    state.games[roomId] = buildRoom(sessionId);
 
     newturn(state.stanza, sessionId, state.games[roomId], roomId);
 
