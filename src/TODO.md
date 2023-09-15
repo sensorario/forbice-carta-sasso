@@ -1,3 +1,5 @@
 # TODO
 
- - gestire la parita
+ - mostrare il tempo rimanente
+ - allo scadere del tempo mostrare il vincitore
+ - gestire stanze differenti
