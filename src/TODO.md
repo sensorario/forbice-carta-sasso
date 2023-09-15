@@ -1,0 +1,3 @@
+# TODO
+
+ - gestire la parita
