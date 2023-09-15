@@ -9,11 +9,8 @@ function createOrEnterTheRoom(sessionId) {
   } else {
     const roomId = randomId();
     state.games[roomId] = buildRoom(sessionId);
-
     newturn(state.stanza, sessionId, state.games[roomId], roomId);
-
     state.stanza = null;
-    state.status = statuses.engaged;
   }
 }
 

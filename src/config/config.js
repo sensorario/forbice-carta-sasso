@@ -1,8 +1,3 @@
-const statuses = {
-  idle: 'idle',
-  engaged: 'engaged',
-};
-
 const type = {
   choice: 'choice',
 };
@@ -26,7 +21,6 @@ const wins = [
 ];
 
 module.exports = {
-  statuses,
   config,
   allowedClientRequestType,
   type,
