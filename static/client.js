@@ -33,9 +33,7 @@ function setCookie(name, value) {
 
 const sessionIdCookie = getCookie('sessionId');
 
-let ws = sessionIdCookie
-  ? new WebSocket('ws://localhost:8080?sessionId=' + sessionIdCookie)
-  : new WebSocket('ws://localhost:8080');
+let ws = sessionIdCookie ? new WebSocket('ws://localhost:8080?sessionId=' + sessionIdCookie) : new WebSocket('ws://localhost:8080');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {

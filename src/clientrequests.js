@@ -20,8 +20,7 @@ function request(msg) {
       else
         wins.forEach((combo) => {
           if (room.turn[sessions.leftPlayer] === combo.primo) {
-            const winner =
-              room.turn[sessions.rightPlayer] === combo.secondo ? sessions.leftPlayer : sessions.rightPlayer;
+            const winner = room.turn[sessions.rightPlayer] === combo.secondo ? sessions.leftPlayer : sessions.rightPlayer;
             state.games[message.roomId].turns.push(winner);
             state.games[message.roomId].turn = {
               [sessions.leftPlayer]: null,
