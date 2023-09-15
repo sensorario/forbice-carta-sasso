@@ -1,5 +1,6 @@
 const counterElement = document.getElementById('counter');
 const sessionIdElement = document.getElementById('sessionId');
+const turnsElement = document.getElementById('turns');
 const turn = document.getElementById('turn');
 const actions = document.getElementById('actions');
 const roomIdElement = document.getElementById('roomId');
@@ -71,6 +72,14 @@ ws.onmessage = (event) => {
     roomIdElement.textContent = 'roomId: ' + roomId;
     const turno = room.turns.length + 1;
     turn.textContent = 'turno ' + turno;
+    if (room.turns.length > 0) {
+      turnsElement.innerHTML = '';
+      room.turns.forEach((turn) => {
+        const element = document.createElement('li');
+        element.textContent = turn;
+        turnsElement.appendChild(element);
+      });
+    }
     setButtonsVisibility('visible');
   }
 };
