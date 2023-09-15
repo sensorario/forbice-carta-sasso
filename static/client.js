@@ -2,7 +2,6 @@ const counterElement = document.getElementById('counter');
 const sessionIdElement = document.getElementById('sessionId');
 const turnsElement = document.getElementById('turns');
 const turn = document.getElementById('turn');
-const actions = document.getElementById('actions');
 const roomIdElement = document.getElementById('roomId');
 const buttons = document.querySelectorAll('.button');
 
@@ -61,7 +60,12 @@ ws.onmessage = (event) => {
   }
 
   if (data.type === 'counter_update') {
-    counterElement.textContent = data.counter;
+    const secondi = data.counter;
+    counterElement.textContent = 'Tempo rimasto: ' + secondi + ' sec.';
+  }
+
+  if (data.type === 'end_game') {
+    console.log('finito di giocare!!!');
   }
 
   if (data.type === 'newturn') {

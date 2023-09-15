@@ -17,7 +17,7 @@ function connectonHandler(ws, req) {
   ws.on('message', request);
 
   setInterval(() => {
-    ws.send(JSON.stringify({ type: 'counter_update', counter: state.counter }));
+    ws.send(JSON.stringify({ type: 'counter_update', counter: config.timeLimit - state.counter }));
   }, config.interval);
 }
 

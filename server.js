@@ -12,10 +12,14 @@ server.listen(8080, () => {
   console.log('Server in ascolto su http://localhost:8080');
 });
 
-setInterval(() => {
+const intervallo = setInterval(() => {
   console.log({
     counter: ++state.counter,
-    // clients: state.clients.size,
-    // games: state.games,
   });
+  if (state.counter >= config.timeLimit) {
+    clearInterval(intervallo);
+    wss.clients.forEach((client) => {
+      client.send(JSON.stringify({ type: 'end_game' }));
+    });
+  }
 }, config.interval);

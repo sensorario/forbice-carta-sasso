@@ -12,6 +12,7 @@ const allowedClientRequestType = [type.choice];
 
 const config = {
   interval: 1000,
+  timeLimit: 10,
 };
 
 const wins = [
