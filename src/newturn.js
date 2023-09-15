@@ -17,7 +17,6 @@ async function newturn(first, second, room, roomId) {
     to: second,
     data: { type: 'newturn', opponent: first, room: room, roomId: roomId },
   });
-  console.log(state.games[roomId]);
 }
 
 module.exports = newturn;

@@ -9,12 +9,11 @@ function request(msg) {
   }
 
   if (message.type === type.choice) {
-    const players = state.games[message.roomId];
     const room = state.games[message.roomId];
     room.turn[message.sessionId] = message.value;
     const sessions = {
-      leftPlayer: [players.players][0][0],
-      rightPlayer: [players.players][0][1],
+      leftPlayer: [room.players][0][0],
+      rightPlayer: [room.players][0][1],
     };
     if (room.turn[sessions.leftPlayer] != null && room.turn[sessions.rightPlayer] != null) {
       if (room.turn[sessions.leftPlayer] === room.turn[sessions.rightPlayer]) console.log('pari');
@@ -35,8 +34,8 @@ function request(msg) {
     } else {
       console.log({
         game: state.games[message.roomId].turn,
-        firstPlayer: [players.players][0][0],
-        lastPlayer: [players.players][0][1],
+        firstPlayer: [room.players][0][0],
+        lastPlayer: [room.players][0][1],
       });
     }
     console.log(JSON.stringify(state.games[message.roomId].turn));

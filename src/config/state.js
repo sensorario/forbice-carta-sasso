@@ -1,5 +1,16 @@
 const { statuses } = require('./config');
 
+function buildRoom(sessionId) {
+  return {
+    players: [state.stanza, sessionId],
+    turns: [],
+    turn: {
+      [state.stanza]: null,
+      [sessionId]: null,
+    },
+  };
+}
+
 const state = {
   games: {
     // players: ['aaa':'bbb'],
@@ -14,4 +25,5 @@ const state = {
 
 module.exports = {
   state,
+  buildRoom,
 };
