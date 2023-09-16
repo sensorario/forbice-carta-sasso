@@ -66,6 +66,20 @@ ws.onmessage = (event) => {
 
   if (data.type === 'end_game') {
     console.log('finito di giocare!!!');
+    turnsElement.innerHTML = '';
+
+    const counts = {};
+    room.turns.forEach((turn) => {
+      const element = document.createElement('li');
+      element.textContent = turn;
+      counts[turn] = (counts[turn] || 0) + 1;
+      turnsElement.appendChild(element);
+    });
+
+    console.log('and the winner is, ...');
+    if (counts[room.players[0]] === counts[room.players[1]]) console.log('pari');
+    else if (counts[room.players[0]] > counts[room.players[1]]) console.log(`ha vinto "${room.players[0]}"`);
+    else console.log(`ha vinto "${room.players[1]}"`);
   }
 
   if (data.type === 'newturn') {
@@ -74,14 +88,6 @@ ws.onmessage = (event) => {
     roomIdElement.textContent = 'roomId: ' + roomId;
     const turno = room.turns.length + 1;
     turn.textContent = 'turno ' + turno;
-    if (room.turns.length > 0) {
-      turnsElement.innerHTML = '';
-      room.turns.forEach((turn) => {
-        const element = document.createElement('li');
-        element.textContent = turn;
-        turnsElement.appendChild(element);
-      });
-    }
     setButtonsVisibility('visible');
   }
 };
