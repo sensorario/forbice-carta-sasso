@@ -70,6 +70,7 @@ ws.onmessage = (event) => {
 
     const counts = {};
     room.turns.forEach((turn) => {
+      if (turn === '') return;
       const element = document.createElement('li');
       element.textContent = turn;
       counts[turn] = (counts[turn] || 0) + 1;

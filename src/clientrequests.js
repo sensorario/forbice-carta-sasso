@@ -16,19 +16,22 @@ function request(msg) {
       rightPlayer: [room.players][0][1],
     };
     if (room.turn[sessions.leftPlayer] != null && room.turn[sessions.rightPlayer] != null) {
-      if (room.turn[sessions.leftPlayer] === room.turn[sessions.rightPlayer]) console.log('pari');
-      else
+      if (room.turn[sessions.leftPlayer] === room.turn[sessions.rightPlayer]) {
+        state.games[message.roomId].turns.push('');
+        console.log('pari');
+      } else
         wins.forEach((combo) => {
           if (room.turn[sessions.leftPlayer] === combo.primo) {
             const winner = room.turn[sessions.rightPlayer] === combo.secondo ? sessions.leftPlayer : sessions.rightPlayer;
             state.games[message.roomId].turns.push(winner);
-            state.games[message.roomId].turn = {
-              [sessions.leftPlayer]: null,
-              [sessions.rightPlayer]: null,
-            };
-            newturn(sessions.leftPlayer, sessions.rightPlayer, room, message.roomId);
           }
         });
+
+      state.games[message.roomId].turn = {
+        [sessions.leftPlayer]: null,
+        [sessions.rightPlayer]: null,
+      };
+      newturn(sessions.leftPlayer, sessions.rightPlayer, room, message.roomId);
       console.log('turno finito');
     } else {
       console.log({
