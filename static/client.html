@@ -7,16 +7,21 @@
 </head>
 <body>
   <h1>Forbice Carta Sasso</h1>
-  <div id="counter">0</div>
-  <div id="turn"></div>
-  <div id="roomId"></div>
-  <div id="actions">
-    <button data-choice="forbice" class="button">forbice</button>
-    <button data-choice="carta" class="button">carta</button>
-    <button data-choice="sasso" class="button">sasso</button>
+  <div id="active_game">
+    <div id="counter">0</div>
+    <div id="turn"></div>
+    <div id="roomId"></div>
+    <div id="actions">
+      <button data-choice="forbice" class="button">forbice</button>
+      <button data-choice="carta" class="button">carta</button>
+      <button data-choice="sasso" class="button">sasso</button>
+    </div>
+    <div id="sessionId"></div>
+    <div id="turns"></div>
   </div>
-  <div id="sessionId"></div>
-  <div id="turns"></div>
+  <div id="finished_game">
+    <div id="winer"></div>
+  </div>
   <script src="client.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+const activeGameElement = document.getElementById('active_game');
+const finishedGameElement = document.getElementById('finished_game');
+const winnerElement = document.getElementById('winer');
+
 const counterElement = document.getElementById('counter');
 const sessionIdElement = document.getElementById('sessionId');
 const turnsElement = document.getElementById('turns');
@@ -74,9 +78,16 @@ ws.onmessage = (event) => {
     });
 
     console.log('and the winner is, ...');
-    if (counts[room.players[0]] === counts[room.players[1]]) console.log('pari');
-    else if (counts[room.players[0]] > counts[room.players[1]]) console.log(`ha vinto "${room.players[0]}"`);
-    else console.log(`ha vinto "${room.players[1]}"`);
+    let winnerIs = '';
+    if (counts[room.players[0]] === counts[room.players[1]]) winnerIs = 'pari';
+    else if (counts[room.players[1]] === undefined || counts[room.players[0]] > counts[room.players[1]])
+      winnerIs = `ha vinto "${room.players[0]}"`;
+    else winnerIs = `ha vinto "${room.players[1]}"`;
+
+    activeGameElement.style.visibility = 'hidden';
+    finishedGameElement.style.visibility = 'visible';
+    winnerElement.innerHTML = winnerIs;
+    setButtonsVisibility('hidden');
   }
 
   if (data.type === 'newturn') {

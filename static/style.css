@@ -1,3 +1,7 @@
 #actions {
     visibility: hidden;
 }
+
+#finished_game {
+    visibility: hidden;
+}
