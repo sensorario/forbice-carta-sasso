@@ -66,15 +66,11 @@ ws.onmessage = (event) => {
 
   if (data.type === 'end_game') {
     console.log('finito di giocare!!!');
-    turnsElement.innerHTML = '';
 
     const counts = {};
     room.turns.forEach((turn) => {
       if (turn === '') return;
-      const element = document.createElement('li');
-      element.textContent = turn;
       counts[turn] = (counts[turn] || 0) + 1;
-      turnsElement.appendChild(element);
     });
 
     console.log('and the winner is, ...');
@@ -90,5 +86,13 @@ ws.onmessage = (event) => {
     const turno = room.turns.length + 1;
     turn.textContent = 'turno ' + turno;
     setButtonsVisibility('visible');
+
+    turnsElement.innerHTML = '';
+    room.turns.forEach((turn) => {
+      if (turn === '') return;
+      const element = document.createElement('li');
+      element.textContent = turn;
+      turnsElement.appendChild(element);
+    });
   }
 };
