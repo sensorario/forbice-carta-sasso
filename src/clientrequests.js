@@ -21,8 +21,8 @@ function request(msg) {
         console.log('pari');
       } else
         wins.forEach((combo) => {
-          if (room.turn[sessions.leftPlayer] === combo.primo) {
-            const winner = room.turn[sessions.rightPlayer] === combo.secondo ? sessions.leftPlayer : sessions.rightPlayer;
+          if (room.turn[sessions.leftPlayer] === combo.first) {
+            const winner = room.turn[sessions.rightPlayer] === combo.second ? sessions.leftPlayer : sessions.rightPlayer;
             state.games[message.roomId].turns.push(winner);
           }
         });

@@ -12,13 +12,13 @@ const allowedClientRequestType = [type.choice];
 
 const config = {
   interval: 1000,
-  timeLimit: 10,
+  timeLimit: 30,
 };
 
 const wins = [
-  { primo: choices.forbice, secondo: choices.carta },
-  { primo: choices.carta, secondo: choices.sasso },
-  { primo: choices.sasso, secondo: choices.forbice },
+  { first: choices.forbice, second: choices.carta },
+  { first: choices.carta, second: choices.sasso },
+  { first: choices.sasso, second: choices.forbice },
 ];
 
 module.exports = {
